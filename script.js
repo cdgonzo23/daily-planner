@@ -1,7 +1,26 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+var hoursArr = [00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+console.log(hoursArr);
+
 $(function () {
+  var currHour = dayjs().hour();
+  console.log(currHour)
+  $('.time-block').each(function() {
+    var id = $(this).attr('id').split('-')[1];
+    var rowHour = parseInt(id);
+    console.log(rowHour);
+    
+
+    if (currHour < rowHour) {
+      $(this).addClass('future');
+    } else if (currHour > rowHour) {
+      $(this).addClass('past');
+    } else {
+      $(this).addClass('present');
+    };
+  });
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
