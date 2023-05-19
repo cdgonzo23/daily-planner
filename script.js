@@ -1,5 +1,5 @@
 $(function () {
-  var currHour = dayjs().hour()-8;
+  var currHour = dayjs().hour();
   $('.time-block').each(function() {
     var id = $(this).attr('id').split('-')[1];
     var rowHour = parseInt(id);
@@ -18,10 +18,8 @@ $(function () {
       time: $(this).closest('.time-block').attr('id'),
       description: $(this).prev().val()
     };
-    if (userProj.description !== "") {
       console.log(userProj);
       localStorage.setItem(userProj.time, userProj.description)
-    };
   });
 
   $('.time-block').each(function() {
